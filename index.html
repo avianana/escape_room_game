@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d18">
+  <title>Escape Room: The Mystery Door</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main id="app">
+    <section id="home-screen" class="screen home-screen">
+      <div class="brand-mark">✦ MYSTERY ADVENTURES ✦</div>
+      <div class="home-door"><div class="door-knob"></div><span>?</span></div>
+      <h1>ESCAPE <em>ROOM</em></h1>
+      <p class="tagline">CAN YOU FIND YOUR WAY OUT?</p>
+      <p class="intro">Lima ruangan. Banyak rahasia. Satu jalan keluar.</p>
+      <div class="home-actions">
+        <button id="play-btn" class="btn btn-gold">PLAY GAME <span>→</span></button>
+        <button id="how-btn" class="btn btn-outline">HOW TO PLAY</button>
+        <button id="about-btn" class="btn btn-ghost">ABOUT</button>
+      </div>
+      <p class="saved-note" id="saved-note"></p>
+    </section>
+
+    <section id="game-screen" class="screen hidden">
+      <header class="topbar">
+        <button id="home-btn" class="icon-btn" title="Kembali ke menu">⌂</button>
+        <div class="top-title">ESCAPE <span>ROOM</span></div>
+        <div class="stats">
+          <span>◷ <b id="timer">00:00</b></span>
+          <span>★ <b id="score">0</b></span>
+          <button id="sound-btn" class="icon-btn" title="Mute / unmute">♫</button>
+        </div>
+      </header>
+      <div class="game-heading">
+        <div><small id="level-count">LEVEL 1 / 5</small><h2 id="level-name">THE BEDROOM</h2></div>
+        <button id="hint-btn" class="btn btn-hint">💡 HINT <small>(−20)</small></button>
+      </div>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <div class="game-layout">
+        <section class="room-panel">
+          <div class="room-scene" id="room-scene">
+            <div class="scene-label" id="scene-label">THE BEDROOM</div>
+            <div class="window"><div class="moon"></div><i></i></div>
+            <div class="wall-art" data-object="painting" role="button" tabindex="0" aria-label="Lukisan">✧</div>
+            <div class="clock" data-object="clock" role="button" tabindex="0"><span>◷</span></div>
+            <div class="shelf" data-object="shelf" role="button" tabindex="0"><i></i><i></i><i></i></div>
+            <div class="bed" data-object="bed" role="button" tabindex="0"><div class="pillow"></div><div class="blanket"></div></div>
+            <div class="desk" data-object="desk" role="button" tabindex="0"><div class="drawer"></div></div>
+            <div class="cabinet" data-object="cabinet" role="button" tabindex="0"><div class="cabinet-knob"></div></div>
+            <div class="door" data-object="door" role="button" tabindex="0"><div class="door-panel"></div><div class="door-handle"></div><span>EXIT</span></div>
+            <div class="floor"></div>
+            <div class="hotspot-help">Klik benda untuk memeriksanya</div>
+          </div>
+          <div class="room-caption"><span>⌖ AREA INVESTIGASI</span><span id="room-status">Cari petunjuk di ruangan ini</span></div>
+        </section>
+        <aside class="side-panel">
+          <div class="panel-card">
+            <h3>✦ INVENTORY</h3>
+            <div id="inventory" class="inventory"><p class="empty">Belum ada barang ditemukan.</p></div>
+          </div>
+          <div class="panel-card objective-card">
+            <h3>▣ MISI</h3><p id="objective">Temukan petunjuk dan pecahkan kode untuk membuka pintu.</p>
+            <div class="clue-count"><span>Petunjuk ditemukan</span><b id="clue-count">0 / 3</b></div>
+          </div>
+          <div class="panel-card log-card">
+            <h3>⌁ CATATAN DETEKTIF</h3><div id="event-log" aria-live="polite"><p>Petualangan dimulai. Periksa setiap benda dengan teliti.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="win-screen" class="screen hidden">
+      <div class="win-symbol">✦</div><p class="eyebrow">CASE CLOSED</p>
+      <h1>YOU ESCAPED!</h1><p class="tagline">Semua misteri berhasil kamu pecahkan.</p>
+      <div class="win-stats"><div><small>SKOR AKHIR</small><b id="final-score">0</b></div><div><small>WAKTU</small><b id="final-time">00:00</b></div></div>
+      <button id="again-btn" class="btn btn-gold">PLAY AGAIN ↻</button>
+      <button id="menu-win-btn" class="btn btn-outline">MAIN MENU</button>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card"><button id="modal-close" class="modal-x" aria-label="Tutup">×</button>
+      <div class="modal-icon" id="modal-icon">⌕</div><p class="eyebrow" id="modal-kicker">INVESTIGASI</p>
+      <h2 id="modal-title">Periksa benda</h2><div id="modal-body" class="modal-body"></div>
+      <div id="modal-actions" class="modal-actions"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
